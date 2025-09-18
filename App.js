@@ -1,6 +1,6 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, View, Button, TouchableOpacity } from 'react-native';
 
 export default function App() {
   const [count, setCount] = React.useState(0);
@@ -8,8 +8,15 @@ export default function App() {
     <View style={styles.container}>
       <Text style= {styles.title}>CONTADOR</Text>
       <Text style={styles.count}>{count}</Text>
-      <Button style={styles.button} title="Incrementar" onPress={() => setCount(count + 1)} />
-      <Button style={styles.button} title="Disminuir" onPress={() => setCount(count - 1)} />
+      <View style={{flexDirection: 'row'}}>
+        <TouchableOpacity style={styles.button} onPress={() => setCount(count + 1)}>
+          <Text style={styles.buttonText}> + </Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.button} onPress={() => setCount(count - 1)}>
+          <Text style={styles.buttonText}> - </Text>
+        </TouchableOpacity>
+      </View>
       <StatusBar style="auto" />
     </View>
   );
@@ -18,7 +25,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#e0e3efff',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -32,10 +39,17 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   button: {
+    height: 80,
+    width: 80,
+    alignItems: 'center',
+    justifyContent: 'center',
     margin: 10,
     padding: 10,
     borderRadius: 100 / 2,
-    backgroundColor: '#9b4717ff',
-    color: '#af5959ff',
+    backgroundColor: '#37322fff',
+  },
+  buttonText: {
+    fontSize: 36,
+    color: '#ffffff',
   },
 });
